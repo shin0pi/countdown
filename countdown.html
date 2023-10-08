@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            /* Schwarzer Hintergrund für den gesamten Bildschirm */
+        }
+
+        /* Stil für den Countdown */
+        #countdown {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 36px;
+            /* Schriftgröße */
+            font-weight: bold;
+            /* Fettschrift */
+            color: white;
+            /* Weiße Schriftfarbe */
+            text-align: center;
+            /* Zentrierte Ausrichtung */
+            background-color: black;
+            /* Schwarzer Hintergrund */
+            padding: 20px;
+            /* Innenabstand */
+            position: fixed;
+            top: 50%;
+            /* 50% vom oberen Rand */
+            left: 50%;
+            /* 50% vom linken Rand */
+            transform: translate(-50%, -50%);
+            /* Zentrierte Position */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        // JavaScript-Code für den Countdown
+        function showCountdown() {
+            // Das Enddatum für den Countdown (25. Oktober 2023)
+            var endDate = new Date("2023-10-25T00:00:00").getTime();
+
+            // Aktuelle Uhrzeit
+            var now = new Date().getTime();
+
+            // Berechne die verbleibende Zeit in Millisekunden
+            var timeRemaining = endDate - now;
+
+            // Berechne Tage, Stunden, Minuten und Sekunden
+            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            // Aktualisiere das HTML-Element mit dem Countdown im Format "dd:hh:mm:ss"
+            document.getElementById("countdown").innerHTML = days + ":" + hours + ":" + minutes + ":" + seconds + "";
+        }
+
+        // Rufe die Funktion alle Sekunde auf, um den Countdown zu aktualisieren
+        setInterval(showCountdown, 1000);
+
+        // Initialanruf der Funktion, um den Countdown sofort anzuzeigen
+        showCountdown();
+    </script>
+
+</body>
+
+</html>
